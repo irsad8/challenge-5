@@ -1,0 +1,49 @@
+<%- include('layouts/header') %>
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h5 mb-0 text-gray-800"><b>Cars > </b>List car</h1>
+            <div>
+                <a href="/add" class="btn btn-success float-right"><i class="fas fa-plus-circle"></i> tambah mobil</a>
+            </div>
+        </div>
+
+        <% if (Cars.length !==0) { %>
+            <!-- views/form.ejs -->
+            <div class="row row-cols-1 row-cols-md-3" style="color: black;">
+                <% Cars.forEach(car => { %>
+                    <div class="col mb-4">
+                    <div class="card h-100">
+                        <div class="card-img-container">
+                            <img src="/uploads/<%= car.gambar %>" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted"><%= car.nama %> / <%= car.kategori %></h6>
+                            <h5 class="card-title"><b>Rp.<%= Number(car.harga).toLocaleString('id-ID') %></b></h5>
+                            <p class="card-text">Start rent - finish rent</p>
+                            <p class="card-text"><small class="text-muted">Last updated at <%=  car.updatedAt %></small></p>
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-6">
+                                    <button class="btn btn-outline-danger btn-block" onclick="hapus(<%= car.id %>)"><i class="far fa-trash-alt"></i>   delete</button>
+                                </div>
+                                <div class="col-6">
+                                    <a href="/edit/<%= car.id %>" class="btn btn-success btn-block"><i class="fas fa-edit"></i>  edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <% } else { %>
+                <h1>data not found</h1>
+                <% } %>
+
+    </div>
+    <!-- /.container-fluid -->
+
+    <%- include('layouts/footer') %>

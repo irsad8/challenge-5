@@ -1,0 +1,74 @@
+<%- include('layouts/header') %>
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h5 mb-0 text-gray-800"><b>list > </b>edit car</h1>
+        </div>
+
+        <% if (car.length !==0) { %>
+        <form enctype="multipart/form-data" onsubmit="ubah(event, <%= car.id %>)">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3" name="nama" value="<%= car.nama %>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">kategori</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPassword3" name="kategori"value="<%= car.kategori %>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">harga</label>
+                <div class="col-sm-10">
+                    <input type="number" min="100" class="form-control" id="inputPassword3" name="harga" value="<%= car.harga %>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">gambar</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control" id="exampleFormControlFile1" name="file">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">start rent</label>
+                <div class="col-sm-10">
+                    -
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">finish rent</label>
+                <div class="col-sm-10">
+                    -
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">created at</label>
+                <div class="col-sm-10">
+                    <%= car.createdAt %>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="exampleFormControlFile1" class="col-sm-2 col-form-label">updated at</label>
+                <div class="col-sm-10">
+                    <%= car.updatedAt %>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-success btn-block">edit</button>
+                </div>
+            </div>
+        </form>
+        <% } else { %>
+            <h1>data not found</h1>
+        <% } %>
+
+    </div>
+    <!-- /.container-fluid -->
+
+    <%- include('layouts/footer') %>

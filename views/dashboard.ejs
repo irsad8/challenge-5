@@ -1,0 +1,57 @@
+<%- include('layouts/header') %>
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h5 mb-0 text-gray-800"><b>Dashboard > </b>Dashboard</h1>
+        </div>
+
+
+
+        <% if (Cars.length !==0) { %>
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>no</th>
+                                    <th>Nama</th>
+                                    <th>Kategori</th>
+                                    <th>Harga</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% Cars.forEach((car, i) => { %>
+                                    <tr>
+                                        <th>
+                                            <%= i + 1 %>
+                                        </th>
+                                        <td>
+                                            <%= car.nama %>
+                                        </td>
+                                        <td>
+                                            <%= car.kategori %>
+                                        </td>
+                                        <td>
+                                            <%= car.harga %>
+                                        </td>
+                                        <td class="text-center">edit and delete</td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <% } else { %>
+                <h1>data not found</h1>
+                <% } %>
+
+    </div>
+    <!-- /.container-fluid -->
+
+    <%- include('layouts/footer') %>
